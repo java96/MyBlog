@@ -21,6 +21,6 @@
 </head>
 
 <body>
-<jsp:forward page="Reception/Home.jsp"></jsp:forward>
+<jsp:forward page="Reception/home.jsp"></jsp:forward>
 </body>
 </html>
