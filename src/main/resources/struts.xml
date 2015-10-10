@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.multipart.saveDir" value="/tmp"/>
+
+    <!--用户Action-->
+    <package name="user" extends="struts-default">
+        <action name="user_*" class="userAction" method="{1}">
+            <result name="user">Reception/index.jsp</result>
+            <result name="admin">Backstage/Welcome.jsp</result>
+            <result name="login">login.jsp</result>
+            <result name="register">register.jsp</result>
+            <result name="input">index.jsp</result>
+        </action>
+
+        <!-- 用户管理Action -->
+        <action name="userManager_*" class="userManagerAction" method="{1}">
+            <result name="userAdd">Backstage/user/userAdd.jsp</result>
+            <result name="userList">Backstage/user/userList.jsp</result>
+            <result name="userAList">Backstage/user/userAList.jsp</result>
+            <result name="userUpdate">Backstage/user/userUpdate.jsp</result>
+        </action>
+    </package>
+
+    <!-- 日志Action-->
+    <package name="journal" extends="struts-default">
+        <action name="journal_*" class="journalAction" method="{1}">
+            <result name="journalList">Backstage/journal/journalList.jsp</result>
+            <result name="updateJournal">Backstage/journal/journalUpdate.jsp</result>
+            <!-- 前台显示-->
+            <result name="receptionJournal">Reception/journaList.jsp</result>
+            <result name="articleJournalList">Reception/ArticleJournalList.jsp</result>
+        </action>
+    </package>
+
+    <!-- 日记Action-->
+    <package name="diary" extends="struts-default">
+        <action name="diary_*" class="diaryAction" method="{1}">
+            <result name="listDiary">Backstage/diary/diaryList.jsp</result>
+            <result name="updateDiary">Backstage/diary/diaryUpdate.jsp</result>
+
+            <!-- 前台显示-->
+            <result name="receptionList">Reception/diaryList.jsp</result>
+            <result name="articleDiaryList">Reception/ArticleDiaryList.jsp</result>
+        </action>
+    </package>
+
+    <!-- 学无止境Action-->
+    <package name="learn" extends="struts-default">
+        <action name="learn_*" class="learnAction" method="{1}">
+            <result name="listLearn">Backstage/learn/learnList.jsp</result>
+            <result name="updateLearn">Backstage/learn/learnUpdate.jsp</result>
+            <!-- 前台显示-->
+            <result name="receptionList">Reception/learnList.jsp</result>
+            <result name="articleLearnList">Reception/ArticleLearnList.jsp</result>
+        </action>
+    </package>
+
+    <!-- 有点意思Action-->
+    <package name="chat" extends="struts-default">
+        <action name="chat_*" class="chatAcion" method="{1}">
+            <result name="listChat">Backstage/chat/chatList.jsp</result>
+            <result name="updateChat">Backstage/chat/chatUpdate.jsp</result>
+            <!-- 前台显示-->
+            <result name="receptionList">Reception/chatList.jsp</result>
+        </action>
+    </package>
+
+    <!-- 关于我Action-->
+    <package name="aboutMi" extends="struts-default">
+        <action name="aboutMi_*" class="aboutMiAcion" method="{1}">
+            <result name="updateAboutMi">Backstage/about/aboutMiUpdate.jsp</result>
+            <result name="queryAboutMi">Backstage/about/aboutMiUpdate.jsp</result>
+            <!--前台显示-->
+            <result name="aboutList">Reception/aboutList.jsp</result>
+        </action>
+    </package>
+
+
+    <!-- 留言板Action -->
+    <package name="knowledge" extends="struts-default">
+        <action name="knowledge" class="knowledgeAction">
+            <result>Reception/knowledge.jsp</result>
+        </action>
+    </package>
+
+
+</struts>

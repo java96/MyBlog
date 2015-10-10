@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 扫描配置文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!--配置C3P0数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"
+          p:user="${jdbc.user}"
+          p:password="${jdbc.password}"
+          p:driverClass="${jdbc.driverClass}"
+          p:jdbcUrl="${jdbc.url}"
+          p:initialPoolSize="${initpool}"
+          p:maxPoolSize="${maxpool}"
+          p:minPoolSize="${minpool}"
+          p:maxIdleTime="${maxIdleTime}"
+            />
+    <!--配置session工厂-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+          p:dataSource-ref="dataSource">
+
+        <!-- 列出持久化类-->
+        <property name="annotatedClasses">
+            <list>
+                <value>com.zzss.entity.User</value>
+                <value>com.zzss.entity.Journal</value>
+                <value>com.zzss.entity.Diary</value>
+                <value>com.zzss.entity.Learn</value>
+                <value>com.zzss.entity.Chat</value>
+                <value>com.zzss.entity.AboutMi</value>
+            </list>
+        </property>
+
+        <!-- 定义sessionFactory相关配置 -->
+        <property name="hibernateProperties">
+            <props>
+                <!-- 配置数据库方言-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <!-- 是否根据映射配置数据库表-->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!-- 显示sql语句 -->
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+
+            </props>
+        </property>
+    </bean>
+
+    <!--配置DAO组件的模板-->
+
+    <!-- 配置UserDao -->
+    <bean id="userDao" class="com.zzss.dao.impl.UserDaoImpl"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <!-- 配置日志的Dao-->
+    <bean id="journalDao" class="com.zzss.dao.impl.JournalDaoImpl"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <!-- 配置日记的Dao-->
+    <bean id="diaryDao" class="com.zzss.dao.impl.DiaryDaoImpl"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <!-- 配置学无止境Dao-->
+    <bean id="learnDao" class="com.zzss.dao.impl.LearnDaoImpl"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <!-- 配置有点意思Dao-->
+    <bean id="chatDao" class="com.zzss.dao.impl.ChatDaoImpl"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <!-- 配置关于我Dao-->
+    <bean id="aboutMiDao" class="com.zzss.dao.impl.AboutMiDaoImpl"
+          p:sessionFactory-ref="sessionFactory"/>
+</beans>
