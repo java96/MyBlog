@@ -31,7 +31,7 @@
             <result name="homeList">Backstage/home/homeList.jsp</result>
             <result name="homeUpdate">Backstage/home/homeUpdate.jsp</result>
             <!-- 前台显示-->
-            <result name="receptionHome">Reception/Home.jsp</result>
+            <result name="receptionHome">Reception/home.jsp</result>
             <result name="articleHomeList">Reception/homeList.jsp</result>
         </action>
 
