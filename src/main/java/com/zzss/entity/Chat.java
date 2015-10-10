@@ -52,7 +52,6 @@ public class Chat implements Serializable {
         return chatClick;
     }
 
-
     //    setter
     public void setId(Integer id) {
         this.id = id;

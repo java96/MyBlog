@@ -21,7 +21,7 @@
 <header>
     <div id="logo"><a href="/"></a></div>
     <nav class="topnav" id="topnav">
-        <a href="<%=basePath%>Reception/home.jsp"><span>首页</span><span class="en">Home</span></a><a
+        <a href="<%=basePath%>home_receptionHome?pageBean.pc=1"><span>首页</span><span class="en">Home</span></a><a
             href="<%=basePath%>journal_receptionJournal?pageBean.pc=1"><span>我的日志</span><span class="en">Journal</span></a><a
             href="<%=basePath%>diary_receptionDiary?pageBean.pc=1"><span>我的日记</span><span class="en">Diary</span></a><a
             href="<%=basePath%>learn_receptionLearn?pageBean.pc=1"><span>学无止境</span><span class="en">Learn</span></a><a

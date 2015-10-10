@@ -57,43 +57,54 @@
     <div class="main-wrap">
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i><a href="<%=basePath%>Reception/home.jsp">首页</a><span
-                    class="crumb-step">&gt;</span><span class="crumb-name">日记管理</span></div>
+                    class="crumb-step">&gt;</span><span class="crumb-name">用户管理</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-title">
                 <div class="result-list">
-                    <a href="<%=basePath%>Backstage/chat/chatAdd.jsp"><i class="icon-font"></i>添加内容</a>
+                    <a href="<%=basePath%>Backstage/home/homeAdd.jsp"><i class="icon-font"></i>添加文章</a>
                 </div>
             </div>
             <div class="result-content">
                 <table class="result-tab" width="100%">
                     <tr>
-                        <th>内容ID</th>
+                        <th>文章ID</th>
+                        <th>文章标题</th>
+                        <th>排序级别</th>
+                        <th>文章内容</th>
                         <th>提交时间</th>
-                        <th>内容</th>
                         <th>操作</th>
                     </tr>
-                    <s:iterator value="#request.listChat" var="chat">
+                    <s:iterator value="#request.homeList">
                         <tr>
                             <td>${id}</td>
-                            <td><s:date name="chatCommTime" format="yyyy-MM-dd hh:mm"/></td>
                             <td>
-                                    <%--给日志长度做判断--%>
-                                <s:if test="%{null!=chatText&&chatText.length()>70}">
-                                    <s:property value="%{chatText.substring(0, 70)}"/>
+                                <s:if test="%{null!=homeTitle&&homeTitle.length()>15}">
+                                    <s:property value="%{homeTitle.substring(0, 15)}"/>
                                 </s:if>
                                 <s:else>
-                                    <s:property value="%{chatText}"/>
+                                    <s:property value="%{homeTitle}"/>
                                 </s:else>
                             </td>
+                            <td>${homeLevel}</td>
                             <td>
-                                <a href="chat_queryChat?chat.id=${chat.id}">修改</a>
-                                <a href="chat_deleteChat?chat.id=${chat.id}">删除</a>
+                                    <%--给日志长度做判断--%>
+                                <s:if test="%{null!=homeText&&homeText.length()>60}">
+                                    <s:property value="%{homeText.substring(0, 60)}"/>
+                                </s:if>
+                                <s:else>
+                                    <s:property value="%{homeText}"/>
+                                </s:else>
+                            </td>
+                            <td><s:date name="homeTime" format="yyyy-MM-dd hh:mm"/></td>
+                            <td>
+                                <a href="home_findById?home.id=${id}">修改</a>
+                                <a href="home_deleteHome?home.id=${id}">删除</a>
                             </td>
                         </tr>
                     </s:iterator>
                 </table>
-                <div class="list-page"> 2 条 1/1 页</div>
+
             </div>
         </div>
     </div>

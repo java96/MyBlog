@@ -33,18 +33,18 @@
 </header>
 <article class="blogs">
     <h1 class="t_nav"><br><br></h1>
+    <s:iterator value="#request.homeList">
+        <div class="index_about">
+            <h2 class="c_titile">${homeTitle}</h2>
 
-    <div class="index_about">
-        <h2 class="c_titile">${}</h2>
-
-        <p class="box_c"><span class="d_time">发布时间：</span><span>编辑：杨青</span>
-        </p>
-        <ul class="infos">
-            ${}
-        </ul>
-    </div>
-    </div>
-
+            <p class="box_c"><span class="d_time">发布时间：<s:date name="homeTime"
+                                                               format="yyyy-MM-dd"/></span><span>编辑：${homeUser}</span>
+            </p>
+            <ul class="infos">
+                    ${homeText}
+            </ul>
+        </div>
+    </s:iterator>
 </article>
 <footer>
     <p>Copyright &copy; 2015.篷子 All rights reserved.</p>

@@ -42,12 +42,12 @@
                 <li>
                     <ul class="sub-menu">
                         <li><a href="userManager_findAll"><i class="icon-font">&#xe008;</i>用户管理</a></li>
+                        <li><a href="home_findAll"><i class="icon-font">&#xe008;</i>首页管理</a></li>
                         <li><a href="journal_listJournalAll"><i class="icon-font">&#xe005;</i>日志管理</a></li>
                         <li><a href="diary_listDiary"><i class="icon-font">&#xe006;</i>日记管理</a></li>
                         <li><a href="learn_listLearnAll"><i class="icon-font">&#xe052;</i>学无止境</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe012;</i>有点意思</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe004;</i>留言管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe033;</i>关于我</a></li>
+                        <li><a href="chat_listChat"><i class="icon-font">&#xe012;</i>有点意思</a></li>
+                        <li><a href="aboutMi_queryAboutMi?aboutMi.id=1"><i class="icon-font">&#xe033;</i>关于我</a></li>
                     </ul>
                 </li>
             </ul>

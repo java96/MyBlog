@@ -31,6 +31,7 @@
                 <value>com.zzss.entity.Learn</value>
                 <value>com.zzss.entity.Chat</value>
                 <value>com.zzss.entity.AboutMi</value>
+                <value>com.zzss.entity.Home</value>
             </list>
         </property>
 
@@ -53,6 +54,10 @@
 
     <!-- 配置UserDao -->
     <bean id="userDao" class="com.zzss.dao.impl.UserDaoImpl"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <!-- 配置首页Dao -->
+    <bean id="homeDao" class="com.zzss.dao.impl.HomeDaoImpl"
           p:sessionFactory-ref="sessionFactory"/>
 
     <!-- 配置日志的Dao-->

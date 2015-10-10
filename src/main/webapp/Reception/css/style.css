@@ -232,14 +232,13 @@ aside .rnav ul li a:hover {
 
 /* Õë¶ÔIE6 */
 .page > b, .page a:hover {
-    background: #333;
-    color: #FFF;
+    background: #000000;
+    color: #ffffff;
 }
 
 .page a {
-    color: #F33;
-    border: #999 1px solid;
+    color: #000000;
+    border: #ffffff 1px solid;
 }
-
 
 

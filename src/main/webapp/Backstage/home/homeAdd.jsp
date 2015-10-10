@@ -59,49 +59,46 @@
 
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span
-                    class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">日志管理</a><span
-                    class="crumb-step">&gt;</span><span>新增日志</span></div>
+                    class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">学无止境</a><span
+                    class="crumb-step">&gt;</span><span>新增文章</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="journal_addJournal" method="post" id="myform" name="myform"
+                <form action="home_addHome" method="post" id="myform" name="myform"
                       enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
                         <tr>
-                            <th><i class="require-red">*</i>日志标题：</th>
+                            <th><i class="require-red">*</i>文章标题：</th>
                             <td>
-                                <input class="common-text required" id="title" name="journal.journalTitle" size="50"
-                                       value=""
+                                <input class="common-text required" id="title" name="home.homeTitle" size="50"
                                        type="text">
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="120"><i class="require-red">*</i>推荐推荐：</th>
+                            <th><i class="require-red">*</i>排序级别：</th>
                             <td>
-                                <select name="journal.journalRecommend" id="catid" class="required">
-                                    <option value="1">是</option>
-                                    <option value="0">否</option>
-                                </select>
+                                <input class="common-text required" name="home.homeLevel" size="50"
+                                       type="text">
                             </td>
                         </tr>
 
                         <tr>
-                            <th><i class="require-red">*</i>日志作者：</th>
-                            <td><input class="common-text" name="journal.journalUser" size="50"
+                            <th><i class="require-red">*</i>文章作者：</th>
+                            <td><input class="common-text" name="home.homeUser" size="50"
                                        value="${sessionScope.admin.username}"
                                        type="text"></td>
                         </tr>
                         <tr>
-                            <th><i class="require-red">*</i>缩略图：</th>
-                            <td><input name="journal.journalImager" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
+                            <th><i class="require-red">*</i>文章缩略图：</th>
+                            <td><input name="home.homeImager" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
                             </td>
                         </tr>
                         <tr>
-                            <th><i class="require-red">*</i>日志内容：</th>
+                            <th><i class="require-red">*</i>文章内容：</th>
                             <td>
-                                <textarea name="journal.journalText" id="editor1" rows="10" cols="80">
+                                <textarea name="home.homeText" id="editor1" rows="10" cols="80">
                                 </textarea>
                                 <script>
                                     CKEDITOR.replace('editor1');

@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>Backstage/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>Backstage/css/main.css"/>
     <script type="text/javascript" src="<%=basePath%>Backstage/js/libs/modernizr.min.js"></script>
+    <script src="<%=basePath%>ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -19,15 +20,15 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
+                <li><a class="on" href="index.jsp">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="#">管理员</a></li>
-                <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
+                <li><a href="http://www.mycodes.net">管理员</a></li>
+                <li><a href="http://www.mycodes.net">修改密码</a></li>
+                <li><a href="http://www.mycodes.net">退出</a></li>
             </ul>
         </div>
     </div>
@@ -58,81 +59,78 @@
 
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span
-                    class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">添加用户</a><span
-                    class="crumb-step">&gt;</span><span>新增作品</span></div>
+                    class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">学无止境</a><span
+                    class="crumb-step">&gt;</span><span>修改文章</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="userManager_updateUser" method="post" id="myform" name="myform">
-                    <s:iterator value="#session.user">
+                <s:iterator value="#request.homeList" var="learn">
+                    <form action="home_updateHome" method="post" id="myform" name="myform"
+                          enctype="multipart/form-data">
                         <table class="insert-tab" width="100%">
                             <tbody>
-                            <input type="hidden" name="user.id" value="${id}"/>
                             <tr>
-                                <th><i class="require-red">*</i>用户名：</th>
+                                <th><i class="require-red">*</i>标题：</th>
                                 <td>
-                                    <input class="common-text required" name="user.username" value="${username}"
-                                           size="50" type="text">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th><i class="require-red">*</i>密&nbsp;&nbsp;&nbsp;码：</th>
-                                <td>
-                                    <input class="common-text required" name="user.password" value="${password}"
-                                           size="50" type="text">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th><i class="require-red">*</i>年&nbsp;&nbsp;&nbsp;龄：</th>
-                                <td>
-                                    <input class="common-text required" name="user.age" value="${age}" size="50"
-                                           type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="120"><i class="require-red">*</i>性&nbsp;&nbsp;&nbsp;别：</th>
-                                <td>
-                                    <select name="user.sex" id="catid" class="required">
-                                        <option value="1">男</option>
-                                        <option value="0">女</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th><i class="require-red">*</i>邮&nbsp;&nbsp;&nbsp;箱：</th>
-                                <td>
-                                    <input class="common-text required" name="user.email" value="${email}" size="50"
+                                    <input class="common-text required" id="title" name="home.homeTitle" size="50"
+                                           value="${homeTitle}"
                                            type="text">
                                 </td>
                             </tr>
 
                             <tr>
-                                <th><i class="require-red">*</i>联系电话：</th>
+                                <th><i class="require-red">*</i>优先级显示：</th>
                                 <td>
-                                    <input class="common-text required" name="user.phone" value="${phone}" size="50"
+                                    <input class="common-text required"  name="home.homeLevel" size="50"
+                                           value="${homeLevel}"
                                            type="text">
                                 </td>
                             </tr>
 
 
-                            <th></th>
-                            <td>
-                                    <%--这里放的这些隐藏值做的不明智了--%>
-                                <input type="hidden" name="user.judge" value="${judge}">
-                                <input type="hidden" name="user.endTime" value="${endTime}">
-                                <input type="hidden" name="user.oldIpaddress" value="${oldIpaddress}">
-                                <input type="hidden" name="user.registerTime" value="${registerTime}">
-                                <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
-                                <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
-                            </td>
+                            <tr>
+                                <th><i class="require-red">*</i>作者：</th>
+                                <td><input class="common-text" name="home.homeUser" size="50"
+                                           value="${homeUser}"
+                                           type="text"></td>
+                            </tr>
+
+                            <tr>
+                                <th><i class="require-red">*</i>提交时间：</th>
+                                <td><input class="common-text" name="home.homeTime" size="50"
+                                           value="${homeTime}"
+                                           type="text"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>缩略图：</th>
+                                <td><input name="home.learnImager" value="${learnImager}" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>内容：</th>
+                                <td>
+                                <textarea name="home.homeText" id="editor1" rows="10" cols="80">
+                                        ${homeText}
+                                </textarea>
+                                    <script>
+                                        CKEDITOR.replace('editor1');
+                                    </script>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input type="hidden" name="home.id" value="${id}">
+                                    <input type="hidden" name="home.homeClick" value="${homeClick}">
+                                    <input class="btn btn-primary btn6 mr10" value="更新" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
                             </tr>
                             </tbody>
                         </table>
-                    </s:iterator>
-                </form>
+                    </form>
+                </s:iterator>
             </div>
         </div>
     </div>

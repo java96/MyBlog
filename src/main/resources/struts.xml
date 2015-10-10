@@ -25,6 +25,18 @@
         </action>
     </package>
 
+    <!-- 首页Action-->
+    <package name="home" extends="struts-default">
+        <action name="home_*" class="homeAction" method="{1}">
+            <result name="homeList">Backstage/home/homeList.jsp</result>
+            <result name="homeUpdate">Backstage/home/homeUpdate.jsp</result>
+            <!-- 前台显示-->
+            <result name="receptionHome">Reception/Home.jsp</result>
+            <result name="articleHomeList">Reception/homeList.jsp</result>
+        </action>
+
+    </package>
+
     <!-- 日志Action-->
     <package name="journal" extends="struts-default">
         <action name="journal_*" class="journalAction" method="{1}">

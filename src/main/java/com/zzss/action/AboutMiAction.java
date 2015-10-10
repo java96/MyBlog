@@ -43,11 +43,11 @@ public class AboutMiAction extends ActionSupport {
         return "queryAboutMi";
     }
 
-//前台显示
-public String receptionList() throws Exception {
-    ActionContext act = ActionContext.getContext();
-    act.getSession().put("aboutMi", aboutMiManager.queryAboutMi(getAboutMi()));
-    return "aboutList";
-}
+    //前台显示
+    public String receptionList() throws Exception {
+        ActionContext act = ActionContext.getContext();
+        act.getSession().put("aboutMi", aboutMiManager.queryAboutMi(getAboutMi()));
+        return "aboutList";
+    }
 
 }

@@ -7,9 +7,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--==================================SERVICE================================================================-->
+
     <!-- 定义User业务逻辑模板-->
     <bean id="userManager" class="com.zzss.service.impl.UserManagerImpl"
           p:userDao-ref="userDao"/>
+
+    <!-- 首页服务层-->
+    <bean id="homeManager" class="com.zzss.service.impl.HomeManagerImpl"
+          p:homeDao-ref="homeDao"/>
 
     <!-- 添加日志的服务层-->
     <bean id="journalManager" class="com.zzss.service.impl.JournalManagerImpl"
@@ -40,6 +45,10 @@
     <!-- 后台管理用户Action-->
     <bean id="userManagerAction" class="com.zzss.action.UserManagerAction"
           p:userManager-ref="userManager" scope="prototype"/>
+
+    <!-- 首页Action-->
+    <bean id="homeAction" class="com.zzss.action.HomeAction"
+          p:homeManager-ref="homeManager" scope="prototype"/>
 
     <!-- 日志管理Action-->
     <bean id="journalAction" class="com.zzss.action.JournalAction"
@@ -88,6 +97,11 @@
         <!-- 用户切入点 -->
         <aop:pointcut id="userPointcut"
                       expression="bean(userManager)"/>
+
+        <!-- 首页切入点-->
+        <aop:pointcut id="homePointcut"
+                      expression="bean(homeManager)"/>
+
         <!-- 日志切入点-->
         <aop:pointcut id="journalPointcut"
                       expression="bean(journalManager)"/>
@@ -109,6 +123,11 @@
         <!-- 增强用户处理 -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="userPointcut"/>
+
+        <!-- 增强首页处理 -->
+        <aop:advisor advice-ref="txAdvice"
+                     pointcut-ref="homePointcut"/>
+
         <!-- 增强日志处理 -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="journalPointcut"/>
