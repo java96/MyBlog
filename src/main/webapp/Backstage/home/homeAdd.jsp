@@ -92,7 +92,7 @@
                         </tr>
                         <tr>
                             <th><i class="require-red">*</i>文章缩略图：</th>
-                            <td><input name="home.homeImager" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
+                            <td><input name="home.homeImager" type="file">
                             </td>
                         </tr>
                         <tr>
