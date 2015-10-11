@@ -71,7 +71,6 @@
             <a href="<%=basePath%>home_receptionHome?pageBean.pc=${homeList.tp}">&gt;&gt;</a>
         </div>
         <%--page 结束--%>
-
     </div>
     <aside class="right">
         <div class="news">
