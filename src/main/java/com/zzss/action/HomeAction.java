@@ -54,6 +54,7 @@ public class HomeAction extends ActionSupport {
         this.imagFileName = imagFileName;
     }
 
+
     public void setHomeManager(HomeManager homeManager) {
         this.homeManager = homeManager;
     }
@@ -77,7 +78,6 @@ public class HomeAction extends ActionSupport {
     //    添加首页文章（后台）
     public String addHome() throws Exception {
         String url = ImageTools.getImageUrl(getImag(), getImagFileName());
-        System.out.println(url);
         getHome().setHomeImager(url);
         homeManager.addHome(getHome());
         return "homeList";
@@ -99,8 +99,10 @@ public class HomeAction extends ActionSupport {
 
     //    修改首页文章（后台）
     public String updateHome() throws Exception {
-        String url = ImageTools.getImageUrl(getImag(), getImagFileName());
-        getHome().setHomeImager(url);
+        if (null != imag) {
+            String url = ImageTools.getImageUrl(getImag(), getImagFileName());
+            getHome().setHomeImager(url);
+        }
         homeManager.updateHome(getHome());
         return "homeList";
     }

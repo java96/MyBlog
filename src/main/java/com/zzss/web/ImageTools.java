@@ -57,6 +57,7 @@ public class ImageTools {
                 }
             }
         }
-        return "/files/" + imageName;
+
+        return "files/" + imageName;
     }
 }

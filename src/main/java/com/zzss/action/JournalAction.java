@@ -6,6 +6,9 @@ import com.zzss.common.PageBean;
 import com.zzss.entity.Journal;
 import com.zzss.entity.User;
 import com.zzss.service.JournalManager;
+import com.zzss.web.ImageTools;
+
+import java.io.File;
 
 /**
  * Created by 立鹏 on 2015/9/28.
@@ -20,6 +23,35 @@ public class JournalAction extends ActionSupport {
 
     //封装分页参数
     private PageBean<Journal> pageBean;
+//    图片上传
+
+    private File imag;
+    private String imagContentType;
+    private String imagFileName;
+
+    public File getImag() {
+        return imag;
+    }
+
+    public void setImag(File imag) {
+        this.imag = imag;
+    }
+
+    public String getImagContentType() {
+        return imagContentType;
+    }
+
+    public void setImagContentType(String imagContentType) {
+        this.imagContentType = imagContentType;
+    }
+
+    public String getImagFileName() {
+        return imagFileName;
+    }
+
+    public void setImagFileName(String imagFileName) {
+        this.imagFileName = imagFileName;
+    }
 
 
     public JournalManager getJournalManager() {
@@ -48,6 +80,8 @@ public class JournalAction extends ActionSupport {
 
     //添加日志
     public String addJournal() throws Exception {
+        String url = ImageTools.getImageUrl(getImag(), getImagFileName());
+        getJournal().setJournalImager(url);
         journalManager.addJournal(getJournal());
         return "journalList";
     }
@@ -68,6 +102,10 @@ public class JournalAction extends ActionSupport {
 
     //修改日志(第二步修改日志)
     public String updateJournal() throws Exception {
+        if (null != imag) {
+            String url = ImageTools.getImageUrl(getImag(), getImagFileName());
+            getJournal().setJournalImager(url);
+        }
         journalManager.updateJournal(getJournal());
         return "journalList";
     }

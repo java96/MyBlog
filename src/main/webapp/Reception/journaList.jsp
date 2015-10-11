@@ -40,7 +40,7 @@
 
             <p class="dateview"><span>发布时间：<s:date name="journalDate" format="yyyy-MM-dd"/></span>
                 <span>作者：${journalUser}</span></p>
-            <figure><img src="images/001.png"></figure>
+            <figure><img src="<%=basePath%>${journalImager}"></figure>
             <ul class="nlist">
 
                     <%--给显示文字做判断--%>
@@ -51,7 +51,8 @@
                     ${journalText}
                 </s:else>
 
-                <a title="阅读全文" href="<%=basePath%>journal_clickJournal?journal.id=${id}" target="_blank" class="readmore">阅读全文>></a>
+                <a title="阅读全文" href="<%=basePath%>journal_clickJournal?journal.id=${id}" target="_blank"
+                   class="readmore">阅读全文>></a>
             </ul>
             <div class="line"></div>
             <div class="blank"></div>
@@ -70,6 +71,9 @@
     </div>
 
     <aside class="right">
+        <div class="weather">
+            <embed src="<%=basePath%>files/Time.swf" width="250" height="100">
+        </div>
         <div class="news">
             <h3>
                 <p>推荐日志</p>

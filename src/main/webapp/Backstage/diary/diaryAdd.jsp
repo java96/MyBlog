@@ -93,7 +93,7 @@
                         </tr>
                         <tr>
                             <th><i class="require-red">*</i>日记缩略图：</th>
-                            <td><input name="diary.diaryImager" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
+                            <td><input name="imag" type="file">
                             </td>
                         </tr>
                         <tr>

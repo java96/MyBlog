@@ -6,6 +6,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.zzss.common.PageBean;
 import com.zzss.entity.Diary;
 import com.zzss.service.DiaryManager;
+import com.zzss.web.ImageTools;
+
+import java.io.File;
 
 /**
  * Created by songs on 2015/10/1.
@@ -17,6 +20,35 @@ public class DiaryAction extends ActionSupport {
     private Diary diary;
 
     private PageBean<Diary> pageBean;
+
+    //    图片上传
+    private File imag;
+    private String imagContentType;
+    private String imagFileName;
+
+    public File getImag() {
+        return imag;
+    }
+
+    public void setImag(File imag) {
+        this.imag = imag;
+    }
+
+    public String getImagContentType() {
+        return imagContentType;
+    }
+
+    public void setImagContentType(String imagContentType) {
+        this.imagContentType = imagContentType;
+    }
+
+    public String getImagFileName() {
+        return imagFileName;
+    }
+
+    public void setImagFileName(String imagFileName) {
+        this.imagFileName = imagFileName;
+    }
 
     public Diary getDiary() {
         return diary;
@@ -40,6 +72,8 @@ public class DiaryAction extends ActionSupport {
 
     //    添加日记（后台）
     public String addDiary() throws Exception {
+        String url = ImageTools.getImageUrl(getImag(), getImagFileName());
+        getDiary().setDiaryImager(url);
         diaryManager.addDiary(getDiary());
         return "listDiary";
     }
@@ -60,6 +94,10 @@ public class DiaryAction extends ActionSupport {
 
     //    修改日记
     public String updateDiary() throws Exception {
+        if (null != imag) {
+            String url = ImageTools.getImageUrl(getImag(), getImagFileName());
+            getDiary().setDiaryImager(url);
+        }
         diaryManager.updateDiary(getDiary());
         return "listDiary";
     }

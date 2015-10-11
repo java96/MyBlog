@@ -46,6 +46,9 @@
 
     </div>
     <aside class="right">
+        <div class="weather">
+            <embed src="<%=basePath%>files/Time.swf" width="250" height="100">
+        </div>
         <div class="about_c">
             <p>网名：<span>${userName}</span></p>
 

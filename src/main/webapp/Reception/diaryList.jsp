@@ -41,7 +41,7 @@
             <p class="dateview"><span>发布时间：<s:date name="diaryTime" format="yyyy-MM-dd"/> </span>
                 <span>作者：${diaryUser}</span></p>
             <figure>
-                <img src="images/001.png">
+                <img src="<%=basePath%>${diaryImager}">
             </figure>
             <ul class="nlist">
                     <%--给显示文字做判断--%>
@@ -72,6 +72,9 @@
         </div>
     </div>
     <aside class="right">
+        <div class="weather">
+            <embed src="<%=basePath%>files/Time.swf" width="250" height="100">
+        </div>
         <div class="news">
             <h3>
                 <p>推荐日记</p>

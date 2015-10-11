@@ -61,6 +61,9 @@
         <!-- 多说公共JS代码 end -->
     </div>
     <aside class="right">
+        <div class="weather">
+            <embed src="<%=basePath%>files/Time.swf" width="250" height="100">
+        </div>
         <div class="about_c">
             <img src="<%=basePath%>Reception/images/aboutphoto.jpg"></a>
         </div>

@@ -72,6 +72,9 @@
         <%--page 结束--%>
     </div>
     <aside class="right">
+        <div class="weather">
+            <embed src="<%=basePath%>files/Time.swf" width="250" height="100">
+            </div>
         <div class="news">
             <h3>
                 <p>最新文章</p>

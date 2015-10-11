@@ -5,6 +5,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.zzss.common.PageBean;
 import com.zzss.entity.Learn;
 import com.zzss.service.LearnManager;
+import com.zzss.web.ImageTools;
+
+import java.io.File;
 
 /**
  * Created by songs on 2015/10/2.
@@ -14,9 +17,37 @@ public class LearnAction extends ActionSupport {
     private LearnManager learnManager;
 
     private Learn learn;
-
     //    分页类
     private PageBean<Learn> pageBean;
+
+    //    图片上传
+    private File imag;
+    private String imagContentType;
+    private String imagFileName;
+
+    public File getImag() {
+        return imag;
+    }
+
+    public void setImag(File imag) {
+        this.imag = imag;
+    }
+
+    public String getImagContentType() {
+        return imagContentType;
+    }
+
+    public void setImagContentType(String imagContentType) {
+        this.imagContentType = imagContentType;
+    }
+
+    public String getImagFileName() {
+        return imagFileName;
+    }
+
+    public void setImagFileName(String imagFileName) {
+        this.imagFileName = imagFileName;
+    }
 
     public LearnManager getLearnManager() {
         return learnManager;
@@ -45,6 +76,8 @@ public class LearnAction extends ActionSupport {
 
     //    添加学无止境
     public String addLearn() throws Exception {
+        String url = ImageTools.getImageUrl(getImag(), getImagFileName());
+        getLearn().setLearnImager(url);
         learnManager.addLearn(getLearn());
         return "listLearn";
     }
@@ -65,6 +98,10 @@ public class LearnAction extends ActionSupport {
 
     //修改学无止境
     public String updateLearn() throws Exception {
+        if (null != imag) {
+            String url = ImageTools.getImageUrl(getImag(), getImagFileName());
+            getLearn().setLearnImager(url);
+        }
         learnManager.updateLearn(getLearn());
         return "updateLearn";
     }
@@ -89,7 +126,7 @@ public class LearnAction extends ActionSupport {
     //点进文章
     public String clickLearn() throws Exception {
         ActionContext act = ActionContext.getContext();
-        act.put("learnList",learnManager.queryLearn(getLearn()));
+        act.put("learnList", learnManager.queryLearn(getLearn()));
         return "articleLearnList";
     }
 }

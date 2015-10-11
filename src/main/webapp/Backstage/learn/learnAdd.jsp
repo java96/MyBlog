@@ -93,7 +93,7 @@
                         </tr>
                         <tr>
                             <th><i class="require-red">*</i>文章缩略图：</th>
-                            <td><input name="learn.learnImager" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
+                            <td><input name="imag" type="file">
                             </td>
                         </tr>
                         <tr>
@@ -104,7 +104,6 @@
                                 <script>
                                     CKEDITOR.replace('editor1');
                                 </script>
-
                             </td>
                         </tr>
                         <tr>

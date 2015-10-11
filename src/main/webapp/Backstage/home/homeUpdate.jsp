@@ -81,7 +81,7 @@
                             <tr>
                                 <th><i class="require-red">*</i>优先级显示：</th>
                                 <td>
-                                    <input class="common-text required"  name="home.homeLevel" size="50"
+                                    <input class="common-text required" name="home.homeLevel" size="50"
                                            value="${homeLevel}"
                                            type="text">
                                 </td>
@@ -103,7 +103,8 @@
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>缩略图：</th>
-                                <td><input name="imag" value="<%=basePath%>${learnImager}" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
+                                <td>
+                                    <input name="imag" type="file">
                                 </td>
                             </tr>
                             <tr>
@@ -123,6 +124,7 @@
                                 <td>
                                     <input type="hidden" name="home.id" value="${id}">
                                     <input type="hidden" name="home.homeClick" value="${homeClick}">
+                                    <input type="hidden" name="home.homeImager" value="${homeImager}">
                                     <input class="btn btn-primary btn6 mr10" value="更新" type="submit">
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>

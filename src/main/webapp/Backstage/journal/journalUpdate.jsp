@@ -102,8 +102,8 @@
                                            type="text"></td>
                             </tr>
                             <tr>
-                                <th><i class="require-red">*</i>缩略图：</th>
-                                <td><input name="journal.journalImager" value="${journalImager}" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>-->
+                                <th><i class="require-red">*</i>缩略图路径为：</th>
+                                <td><input name="imag" type="file">
                                 </td>
                             </tr>
                             <tr>
@@ -123,6 +123,7 @@
                                 <td>
                                     <input type="hidden" name="journal.id" value="${id}">
                                     <input type="hidden" name="journal.journaClick" value="${journaClick}">
+                                    <input type="hidden" name="journal.journalImager" value="${journalImager}">
                                     <input class="btn btn-primary btn6 mr10" value="更新" type="submit">
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>
