@@ -92,7 +92,7 @@
                         </tr>
                         <tr>
                             <th><i class="require-red">*</i>文章缩略图：</th>
-                            <td><input name="home.homeImager" type="file">
+                            <td><input name="imag" type="file">
                             </td>
                         </tr>
                         <tr>

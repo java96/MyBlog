@@ -18,8 +18,9 @@
     <meta http-equiv="description" content="This is my page">
     <meta http-equiv="refresh" content="0.1;url=<%=basePath%>home_receptionHome?pageBean.pc=1">
 </head>
-
 <body>
+
+
 
 </body>
 </html>

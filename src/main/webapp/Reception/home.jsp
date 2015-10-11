@@ -39,9 +39,8 @@
     <div class="bloglist left">
         <s:iterator value="#request.homeList.beanList">
             <h3>${homeTitle}</h3>
-            <figure><img src="images/001.png"></figure>
+            <figure><img src="<%=basePath%>${homeImager}"></figure>
             <ul>
-
                     <%--给显示文字做判断--%>
                 <s:if test="%{null!=homeText&&homeText.length()>300}">
                     <s:property value="%{homeText.substring(0, 300)}"/>
