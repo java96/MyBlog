@@ -65,4 +65,8 @@ public class JournalDaoImpl extends BaseDaoImpl<Journal> implements JournalDao {
         return findByPage(hql, 0, 5);
     }
 
+    //   ²åÈëµã»÷Êý
+    public void clickJournal() {
+        click("update Journal set journaClick = journaClick + 1");
+    }
 }

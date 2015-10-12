@@ -34,4 +34,6 @@ public interface HomeDao {
     //    前台显示（点击日志排序）
     List<Home> receptionClickHome();
 
+    //   插入点击数
+    void clickHome();
 }

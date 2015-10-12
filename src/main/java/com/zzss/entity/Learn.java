@@ -14,18 +14,25 @@ import java.util.Date;
 public class Learn implements Serializable {
     //ID
     private Integer id;
+
     //标题名称
     private String learnTitle;
+
     //作者
     private String learnName;
+
     //缩略图
     private String learnImager;
+
     //推荐文章
     private char learnRecommend;
+
     //提交时间
     private Date learnCommtime;
+
     //点击数
     private int learnClick;
+
     //内容
     private String learnText;
 

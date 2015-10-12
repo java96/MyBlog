@@ -64,4 +64,10 @@ public class LearnDaoImpl extends BaseDaoImpl<Learn> implements LearnDao {
         String hql = "select ld from Learn ld order by ld.learnClick desc";
         return findByPage(hql, 0, 5);
     }
+
+    //   ²åÈëµã»÷Êý
+    public void clickLearn() {
+        click("update Learn set learnClick = learnClick + 1");
+    }
+
 }

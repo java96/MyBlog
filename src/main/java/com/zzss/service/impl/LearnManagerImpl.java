@@ -34,6 +34,7 @@ public class LearnManagerImpl implements LearnManager {
 
     //    查询学无止境
     public Learn queryLearn(Learn learn) {
+        learnDao.clickLearn();
         return learnDao.queryLearn(learn);
     }
 

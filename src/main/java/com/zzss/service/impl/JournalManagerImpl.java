@@ -32,12 +32,13 @@ public class JournalManagerImpl implements JournalManager {
         return journalDao.listAll();
     }
 
-    //修改日志(第一步查询日志)
+    //查询日志
     public Journal queryById(Journal journal) {
+        journalDao.clickJournal();
         return journalDao.queryById(journal);
     }
 
-    //修改日志(第二步修改日志)
+    //修改日志
     public void updateJournal(Journal journal) {
         journalDao.updateJournal(journal);
     }

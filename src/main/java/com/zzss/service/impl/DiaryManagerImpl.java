@@ -32,6 +32,7 @@ public class DiaryManagerImpl implements DiaryManager {
 
     //根据ID查询日记
     public Diary queryDiaryById(Diary diary) {
+        diaryDao.clickDiary();
         return diaryDao.queryDiaryById(diary);
     }
 

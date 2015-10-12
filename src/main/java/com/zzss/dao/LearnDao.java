@@ -35,4 +35,7 @@ public interface LearnDao {
     //    前台显示（点击文章排序）
     List<Learn> receptionClickLearn();
 
+    //   插入点击数
+    void clickLearn();
+
 }

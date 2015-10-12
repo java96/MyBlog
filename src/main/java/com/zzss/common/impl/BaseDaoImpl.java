@@ -61,8 +61,8 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         return find("select en from "
                 + entityClazz.getSimpleName() + " en");
     }
-    // 获取实体总数
 
+    // 获取实体总数
     public long findCount(Class<T> entityClazz) {
         List<?> l = find("select count(*) from "
                 + entityClazz.getSimpleName());
@@ -139,5 +139,9 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
                 .list();
     }
 
-
+    //根据传进来的实体，增加实体的点击数
+    public void click(String hql) {
+        getSessionFactory().getCurrentSession()
+                .createQuery(hql).executeUpdate();
+    }
 }

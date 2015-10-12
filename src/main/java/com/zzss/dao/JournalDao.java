@@ -59,4 +59,7 @@ public interface JournalDao {
     //    前台显示（点击日志排序）
     List<Journal> receptionClickJournal();
 
+    //   插入点击数
+    void clickJournal();
+
 }

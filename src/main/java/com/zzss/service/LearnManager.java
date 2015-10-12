@@ -35,5 +35,4 @@ public interface LearnManager {
     List<Learn> receptionClickLearn();
 
 
-
 }

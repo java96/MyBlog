@@ -66,4 +66,9 @@ public class HomeDaoImpl extends BaseDaoImpl<Home> implements HomeDao {
         return findByPage(hql, 0, 5);
     }
 
+    //   ²åÈëµã»÷Êý
+    public void clickHome() {
+        click("update Home set homeClick = homeClick + 1");
+    }
+
 }

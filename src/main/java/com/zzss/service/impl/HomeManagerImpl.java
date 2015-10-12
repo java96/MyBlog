@@ -23,7 +23,6 @@ public class HomeManagerImpl implements HomeManager {
     public void addHome(Home home) {
         home.setHomeTime(new Date());
         homeDao.addHome(home);
-
     }
 
     //      查询所有(后台)
@@ -33,6 +32,7 @@ public class HomeManagerImpl implements HomeManager {
 
     //    按照ID查询记录
     public Home findById(Home home) {
+        homeDao.clickHome();
         return homeDao.findById(home);
     }
 

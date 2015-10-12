@@ -34,4 +34,7 @@ public interface DiaryDao {
     //    前台显示（点击文章排序）
     List<Diary> receptionClickDiary();
 
+    //   插入点击数
+    void clickDiary();
+
 }

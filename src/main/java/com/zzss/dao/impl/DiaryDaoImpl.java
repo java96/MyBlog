@@ -63,5 +63,9 @@ public class DiaryDaoImpl extends BaseDaoImpl<Diary> implements DiaryDao {
         String hql = "select rc from Diary rc order by rc.diaryClick desc";
         return findByPage(hql, 0, 5);
     }
+    //   ²åÈëµã»÷Êý
+    public void clickDiary() {
+        click("update Diary set diaryClick = diaryClick + 1");
+    }
 
 }
