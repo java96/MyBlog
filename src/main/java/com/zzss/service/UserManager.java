@@ -61,5 +61,4 @@ public interface UserManager {
      */
     void deleteUser(User user);
 
-
 }

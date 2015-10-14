@@ -76,8 +76,7 @@
                             <th>邮箱</th>
                             <th>联系电话</th>
                             <th>注册时间</th>
-                            <th>最后登录时间</th>
-                            <th>最后登录IP</th>
+
                             <th>操作</th>
                         </tr>
                         <s:iterator value="#request.userList" var="user">
@@ -89,8 +88,6 @@
                                 <td>${user.email}</td>
                                 <td>${user.phone}</td>
                                 <td><s:date name="#user.registerTime" format="yyyy-MM-dd hh:mm"/></td>
-                                <td><s:date name="#user.endTime" format="yyyy-MM-dd hh:mm"/></td>
-                                <td>${user.oldIpaddress}</td>
                                 <td>
                                     <a href="userManager_selectUser?user.id=${user.id}">查看</a>
                                     <a href="userManager_updateUserById?user.id=${user.id}">修改</a>

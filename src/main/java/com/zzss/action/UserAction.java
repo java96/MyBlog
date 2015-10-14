@@ -53,12 +53,9 @@ public class UserAction extends ActionSupport {
         if (vercode.equalsIgnoreCase(ver2)) {
             //获取用户ip地址
             String remoteAddr = ServletActionContext.getRequest().getRemoteAddr();
-            //向对象添加登录IP地址
-            getUser().setOldIpaddress(remoteAddr);
-            //向对象添加登录时间
-            getUser().setEndTime(new Date());
 
             int result = userManager.validLogin(getUser());
+
             //  普通用户登录校验
             if (result == 1) {
                 ctx.getSession().put("user", user);
@@ -85,15 +82,13 @@ public class UserAction extends ActionSupport {
         if (vercode.equalsIgnoreCase(ver2)) {
 
             if ((userManager.validregister(user)) > 0) {
-                ctx.put("userregister", "用户添加成功");
+                ctx.put("userregister", "用户注册成功");
                 return "login";
             }
-            System.out.println("User error");
             return "register";
         }
         // 验证码不匹配
         addActionMessage("验证码不匹配,请重新输入");
-        System.out.println("User ma error");
         return "register";
     }
 

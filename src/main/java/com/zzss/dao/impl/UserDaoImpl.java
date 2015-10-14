@@ -57,5 +57,4 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
         delete(User.class, user.getId());
     }
 
-
 }

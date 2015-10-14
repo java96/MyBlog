@@ -37,11 +37,6 @@ public class User implements Serializable {
     //注册时间
     private Date registerTime;
 
-    //最后登陆时间
-    private Date endTime;
-
-    //最后登陆IP
-    private String oldIpaddress;
 
     //判断是用户还是管理
     private char judge;
@@ -49,7 +44,8 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password, String email, char sex, int age, String phone, Date registerTime, Date endTime, String oldIpaddress, char judge) {
+    public User(Integer id, String username, String password, String email, char sex, int age, String phone, Date registerTime, char judge) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -57,8 +53,6 @@ public class User implements Serializable {
         this.age = age;
         this.phone = phone;
         this.registerTime = registerTime;
-        this.endTime = endTime;
-        this.oldIpaddress = oldIpaddress;
         this.judge = judge;
     }
 
@@ -96,13 +90,6 @@ public class User implements Serializable {
         return registerTime;
     }
 
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public String getOldIpaddress() {
-        return oldIpaddress;
-    }
 
     public char getJudge() {
         return judge;
@@ -140,13 +127,6 @@ public class User implements Serializable {
         this.registerTime = registerTime;
     }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public void setOldIpaddress(String oldIpaddress) {
-        this.oldIpaddress = oldIpaddress;
-    }
 
     public void setJudge(char judge) {
         this.judge = judge;

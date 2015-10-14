@@ -4,6 +4,7 @@ import com.zzss.dao.UserDao;
 import com.zzss.entity.User;
 import com.zzss.service.UserManager;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,7 +27,6 @@ public class UserManagerImpl implements UserManager {
     public int validLogin(User user) {
         //    查询普通用户，值如果大于0表示登录成功
         if (userDao.findUserNameAndPass(user).size() >= 1) {
-            userDao.updateUser(user);
             return LOGIN_USER;
 
         }
@@ -48,6 +48,7 @@ public class UserManagerImpl implements UserManager {
      */
 
     public int validregister(User user) {
+
         //首先判断数据库中是否存在该用户，如果等于0表示用户名不存在，执行语句
         if (userDao.findRegisterName(user) == 0) {
             userDao.userRegister(user);
@@ -92,6 +93,7 @@ public class UserManagerImpl implements UserManager {
     public void deleteUser(User user) {
         userDao.deleteUser(user);
     }
+
 
 
 }

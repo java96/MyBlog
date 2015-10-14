@@ -122,21 +122,6 @@
                                 <s:date name="registerTime" format="yyyy-MM-dd hh:mm"/>
                             </td>
                         </tr>
-
-                        <tr>
-                            <th><i class="require-red">*</i>最后登录时间：</th>
-                            <td>
-                                <s:date name="endTime" format="yyyy-MM-dd hh:mm"/>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th><i class="require-red">*</i>最后登录IP：</th>
-                            <td>
-                                    ${oldIpaddress}
-                            </td>
-                        </tr>
-
                         <th></th>
                         <td>
                             <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">

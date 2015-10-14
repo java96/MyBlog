@@ -38,7 +38,6 @@ public interface UserDao extends BaseDao<User> {
     int findRegisterName(User user);
 
 
-
     /**
      * ×¢²áÓÃ»§
      *
@@ -73,5 +72,6 @@ public interface UserDao extends BaseDao<User> {
      * @param user
      */
     void deleteUser(User user);
+
 
 }
