@@ -21,14 +21,20 @@
 <header>
     <div id="logo"><a href="/"></a></div>
     <nav class="topnav" id="topnav">
-        <a href="<%=basePath%>home_receptionHome?pageBean.pc=1"><span>首页</span><span class="en">Home</span></a><a
-            href="<%=basePath%>journal_receptionJournal?pageBean.pc=1"><span>我的日志</span><span class="en">Journal</span></a><a
-            href="<%=basePath%>diary_receptionDiary?pageBean.pc=1"><span>我的日记</span><span class="en">Diary</span></a><a
-            href="<%=basePath%>learn_receptionLearn?pageBean.pc=1"><span>学无止境</span><span class="en">Learn</span></a><a
-            href="<%=basePath%>chat_receptionList?pageBean.pc=1"><span>有点意思</span><span class="en">Chat</span></a><a
-            href="<%=basePath%>knowledge"><span>留言板</span><span class="en">Message</span></a><a
-            href="<%=basePath%>aboutMi_receptionList?aboutMi.id=1"><span>关于我</span><span class="en">About</span></a><a
-            href="<%=basePath%>Login/login.jsp"><span>登陆</span><span class="en">Login</span></a>
+        <a href="<%=basePath%>home_receptionHome?pageBean.pc=1"><span>首页</span><span class="en">Home</span></a>
+        <a href="<%=basePath%>journal_receptionJournal?pageBean.pc=1"><span>我的日志</span><span
+                class="en">Journal</span></a>
+        <a href="<%=basePath%>diary_receptionDiary?pageBean.pc=1"><span>我的日记</span><span class="en">Diary</span></a>
+        <a href="<%=basePath%>learn_receptionLearn?pageBean.pc=1"><span>学无止境</span><span class="en">Learn</span></a>
+        <a href="<%=basePath%>chat_receptionList?pageBean.pc=1"><span>有点意思</span><span class="en">Chat</span></a>
+        <a href="<%=basePath%>knowledge"><span>留言板</span><span class="en">Message</span></a>
+        <a href="<%=basePath%>aboutMi_receptionList?aboutMi.id=1"><span>关于我</span><span class="en">About</span></a>
+        <s:if test="#session.user == null">
+            <a href="<%=basePath%>Login/login.jsp"><span>登录</span><span class="en">Login</span></a>
+        </s:if>
+        <s:else>
+            <a href="#"><span>${sessionScope.user.username}</span><span class="en">Information</span></a>
+        </s:else>
     </nav>
 </header>
 <div class="banner"></div>
@@ -74,7 +80,7 @@
     <aside class="right">
         <div class="weather">
             <embed src="<%=basePath%>files/Time.swf" width="250" height="100">
-            </div>
+        </div>
         <div class="news">
             <h3>
                 <p>最新文章</p>

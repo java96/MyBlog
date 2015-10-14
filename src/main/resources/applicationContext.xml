@@ -7,6 +7,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--==================================SERVICE================================================================-->
+    <!--权限验证-->
+    <bean id="myAuthority" class="com.zzss.authority.Backstage"
+          scope="prototype"/>
 
     <!-- 定义User业务逻辑模板-->
     <bean id="userManager" class="com.zzss.service.impl.UserManagerImpl"

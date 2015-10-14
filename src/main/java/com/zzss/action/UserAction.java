@@ -58,18 +58,18 @@ public class UserAction extends ActionSupport {
 
             //  普通用户登录校验
             if (result == 1) {
-                ctx.getSession().put("user", user);
+                ctx.getSession().put("user", getUser());
                 return "user";
             } else if (result == 2) {
-                ctx.getSession().put("admin", user);
+                ctx.getSession().put("admin", getUser());
                 return "admin";
             }
-            addActionMessage("用户名/密码不匹配");
-            return INPUT;
+            ctx.put("msg", "用户名/密码不匹配");
+            return LOGIN;
         } else {
             // 验证码不匹配
-            addActionMessage("验证码不匹配,请重新输入");
-            return INPUT;
+            ctx.put("msg", "验证码不匹配,请重新输入");
+            return LOGIN;
         }
     }
 
@@ -82,13 +82,14 @@ public class UserAction extends ActionSupport {
         if (vercode.equalsIgnoreCase(ver2)) {
 
             if ((userManager.validregister(user)) > 0) {
-                ctx.put("userregister", "用户注册成功");
+                ctx.put("msg", "用户注册成功!");
                 return "login";
             }
+            ctx.put("msg", "用户名已存在,请换一个用户名!");
             return "register";
         }
         // 验证码不匹配
-        addActionMessage("验证码不匹配,请重新输入");
+        ctx.put("msg", "验证码不匹配,请重新输入!");
         return "register";
     }
 

@@ -1,5 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -7,9 +7,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <script type="text/javascript" src="js/login.js">
-
-    </script>
+    <meta charset="utf-8">
     <title>登陆博客</title>
     <!-- Custom Theme files -->
     <link href="<%=basePath%>Login/css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -17,15 +15,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords"
-          content="Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
-    <!--Google Fonts-->
+    <meta name="keywords" content="java个人博客,java写的博客,个人博客模板,ssh博客"/>
+    <meta name="description" content="篷子个人博客，一个用java语言写的博客，和大家一起分享java的学习技术。"/>
     <link href='http://fonts.useso.com/css?family=Roboto:500,900italic,900,400italic,100,700italic,300,700,500italic,100italic,300italic,400'
           rel='stylesheet' type='text/css'>
     <link href='http://fonts.useso.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
           type='text/css'>
     <!--Google Fonts-->
-
 </head>
 <body>
 <div class="login">
@@ -49,14 +45,12 @@
             <div class="forgot">
                 <s:actionmessage/>
                 <br><br>
-                <a href="#">忘记密码</a>
                 <input type="submit" value="登陆"/>
             </div>
         </form>
-
     </div>
-
     <div class="login-bottom">
+        <h2>${requestScope.msg}</h2>
         <h3>新用户<a href="<%=basePath%>Login/register.jsp">注册</a></h3>
     </div>
 </div>

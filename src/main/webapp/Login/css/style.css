@@ -154,6 +154,12 @@ body{
   -moz-transition: 0.5s all;
   -o-transition: 0.5s all;
 }
+
+.login-bottom h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ff3200;
+}
 .copyright {
   padding: 150px 0px 0px 0px;
   text-align: center;

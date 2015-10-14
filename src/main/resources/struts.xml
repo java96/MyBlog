@@ -4,42 +4,88 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
     <constant name="struts.multipart.saveDir" value="/tmp"/>
 
-    <!--用户Action-->
+    <!--========================用户Action=================================-->
     <package name="user" extends="struts-default">
+        <!-- 配置拦截器-->
+        <interceptors>
+            <!-- 自定义拦截器-->
+            <interceptor name="user" class="myAuthority"/>
+        </interceptors>
+        <!--全局result-->
+        <global-results>
+            <result name="login">/Login/login.jsp</result>
+        </global-results>
+        <!-- Action-->
         <action name="user_*" class="userAction" method="{1}">
-            <result name="user">Reception/home.jsp</result>
+            <result name="user">/index.jsp</result>
             <result name="admin">Backstage/Welcome.jsp</result>
-            <result name="login">login.jsp</result>
             <result name="register">register.jsp</result>
-            <result name="input">index.jsp</result>
         </action>
 
-        <!-- 用户管理Action -->
+        <!--========================用户管理Action=================================-->
         <action name="userManager_*" class="userManagerAction" method="{1}">
+            <!-- 配置默认的拦截器-->
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="user">
+                <!-- 拦截所有方法-->
+                <param name="includeMethods">
+                    *
+                </param>
+            </interceptor-ref>
             <result name="userAdd">Backstage/user/userAdd.jsp</result>
             <result name="userList">Backstage/user/userList.jsp</result>
             <result name="userAList">Backstage/user/userAList.jsp</result>
             <result name="userUpdate">Backstage/user/userUpdate.jsp</result>
         </action>
     </package>
-
-    <!-- 首页Action-->
+    <!--========================首页package===================================-->
     <package name="home" extends="struts-default">
+        <!-- 配置拦截器-->
+        <interceptors>
+            <!-- 自定义拦截器-->
+            <interceptor name="home" class="myAuthority"/>
+        </interceptors>
+        <!--全局result-->
+        <global-results>
+            <result name="login">/Login/login.jsp</result>
+        </global-results>
+        <!-- Action-->
         <action name="home_*" class="homeAction" method="{1}">
+            <!-- 应用自定义拦截器-->
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="home">
+                <!-- excludeMethods-->
+                <param name="excludeMethods">receptionHome,clickHome</param>
+            </interceptor-ref>
             <result name="homeList">Backstage/home/homeList.jsp</result>
             <result name="homeUpdate">Backstage/home/homeUpdate.jsp</result>
             <!-- 前台显示-->
             <result name="receptionHome">Reception/home.jsp</result>
             <result name="articleHomeList">Reception/homeList.jsp</result>
         </action>
-
     </package>
-
-    <!-- 日志Action-->
+    <!--========================日志package===================================-->
     <package name="journal" extends="struts-default">
+        <!-- 配置拦截器-->
+        <interceptors>
+            <!-- 自定义拦截器-->
+            <interceptor name="journal" class="myAuthority"/>
+        </interceptors>
+        <!--全局result-->
+        <global-results>
+            <result name="login">/Login/login.jsp</result>
+        </global-results>
+        <!-- Action-->
         <action name="journal_*" class="journalAction" method="{1}">
+            <!-- 应用自定义拦截器-->
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="journal">
+                <!-- excludeMethods-->
+                <param name="excludeMethods">receptionJournal,clickJournal</param>
+            </interceptor-ref>
             <result name="journalList">Backstage/journal/journalList.jsp</result>
             <result name="updateJournal">Backstage/journal/journalUpdate.jsp</result>
             <!-- 前台显示-->
@@ -47,10 +93,26 @@
             <result name="articleJournalList">Reception/ArticleJournalList.jsp</result>
         </action>
     </package>
-
-    <!-- 日记Action-->
+    <!--========================日记package===================================-->
     <package name="diary" extends="struts-default">
+        <!-- 配置拦截器-->
+        <interceptors>
+            <!-- 自定义拦截器-->
+            <interceptor name="diary" class="myAuthority"/>
+        </interceptors>
+        <!--全局result-->
+        <global-results>
+            <result name="login">/Login/login.jsp</result>
+        </global-results>
+
+        <!-- Action-->
         <action name="diary_*" class="diaryAction" method="{1}">
+            <!-- 应用自定义拦截器-->
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="diary">
+                <!-- excludeMethods-->
+                <param name="excludeMethods">receptionDiary,clickDiary</param>
+            </interceptor-ref>
             <result name="listDiary">Backstage/diary/diaryList.jsp</result>
             <result name="updateDiary">Backstage/diary/diaryUpdate.jsp</result>
 
@@ -59,10 +121,25 @@
             <result name="articleDiaryList">Reception/ArticleDiaryList.jsp</result>
         </action>
     </package>
-
-    <!-- 学无止境Action-->
+    <!--========================学无止境package===================================-->
     <package name="learn" extends="struts-default">
+        <!-- 配置拦截器-->
+        <interceptors>
+            <!-- 自定义拦截器-->
+            <interceptor name="learn" class="myAuthority"/>
+        </interceptors>
+        <!--全局result-->
+        <global-results>
+            <result name="login">/Login/login.jsp</result>
+        </global-results>
+        <!--Action-->
         <action name="learn_*" class="learnAction" method="{1}">
+            <!-- 应用自定义拦截器-->
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="learn">
+                <!-- excludeMethods-->
+                <param name="excludeMethods">receptionLearn,clickLearn</param>
+            </interceptor-ref>
             <result name="listLearn">Backstage/learn/learnList.jsp</result>
             <result name="updateLearn">Backstage/learn/learnUpdate.jsp</result>
             <!-- 前台显示-->
@@ -70,34 +147,60 @@
             <result name="articleLearnList">Reception/ArticleLearnList.jsp</result>
         </action>
     </package>
-
-    <!-- 有点意思Action-->
+    <!--========================有点意思package===================================-->
     <package name="chat" extends="struts-default">
+        <!-- 配置拦截器-->
+        <interceptors>
+            <!-- 自定义拦截器-->
+            <interceptor name="chat" class="myAuthority"/>
+        </interceptors>
+        <!--全局result-->
+        <global-results>
+            <result name="login">/Login/login.jsp</result>
+        </global-results>
+        <!--Action-->
         <action name="chat_*" class="chatAcion" method="{1}">
+            <!-- 应用自定义拦截器-->
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="chat">
+                <!-- excludeMethods-->
+                <param name="excludeMethods">receptionList</param>
+            </interceptor-ref>
             <result name="listChat">Backstage/chat/chatList.jsp</result>
             <result name="updateChat">Backstage/chat/chatUpdate.jsp</result>
             <!-- 前台显示-->
             <result name="receptionList">Reception/chatList.jsp</result>
         </action>
     </package>
-
-    <!-- 关于我Action-->
+    <!--========================关于我package===================================-->
     <package name="aboutMi" extends="struts-default">
+        <!-- 配置拦截器-->
+        <interceptors>
+            <!-- 自定义拦截器-->
+            <interceptor name="aboutMi" class="myAuthority"/>
+        </interceptors>
+        <!--全局result-->
+        <global-results>
+            <result name="login">/Login/login.jsp</result>
+        </global-results>
+        <!--Action-->
         <action name="aboutMi_*" class="aboutMiAcion" method="{1}">
+            <!-- 应用自定义拦截器-->
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="aboutMi">
+                <!-- excludeMethods-->
+                <param name="excludeMethods">receptionList</param>
+            </interceptor-ref>
             <result name="updateAboutMi">Backstage/about/aboutMiUpdate.jsp</result>
             <result name="queryAboutMi">Backstage/about/aboutMiUpdate.jsp</result>
             <!--前台显示-->
             <result name="aboutList">Reception/aboutList.jsp</result>
         </action>
     </package>
-
-
     <!-- 留言板Action -->
     <package name="knowledge" extends="struts-default">
         <action name="knowledge" class="knowledgeAction">
             <result>Reception/knowledge.jsp</result>
         </action>
     </package>
-
-
 </struts>
